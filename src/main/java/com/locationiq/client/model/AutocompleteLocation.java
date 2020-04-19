@@ -13,33 +13,21 @@
 
 package com.locationiq.client.model;
 
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.locationiq.client.model.Address;
-import com.locationiq.client.model.Matchquality;
-import com.locationiq.client.model.Namedetails;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Location
+ * AutocompleteLocation
  */
 
-public class Location {
-  public static final String SERIALIZED_NAME_DISTANCE = "distance";
-  @SerializedName(SERIALIZED_NAME_DISTANCE)
-  private BigDecimal distance;
-
+public class AutocompleteLocation {
   public static final String SERIALIZED_NAME_PLACE_ID = "place_id";
   @SerializedName(SERIALIZED_NAME_PLACE_ID)
   private String placeId;
@@ -68,6 +56,14 @@ public class Location {
   @SerializedName(SERIALIZED_NAME_LON)
   private String lon;
 
+  public static final String SERIALIZED_NAME_DISPLAY_PLACE = "display_place";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_PLACE)
+  private String displayPlace;
+
+  public static final String SERIALIZED_NAME_DISPLAY_ADDRESS = "display_address";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_ADDRESS)
+  private String displayAddress;
+
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "display_name";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
@@ -80,51 +76,12 @@ public class Location {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_IMPORTANCE = "importance";
-  @SerializedName(SERIALIZED_NAME_IMPORTANCE)
-  private BigDecimal importance;
-
   public static final String SERIALIZED_NAME_ADDRESS = "address";
   @SerializedName(SERIALIZED_NAME_ADDRESS)
   private Address address;
 
-  public static final String SERIALIZED_NAME_NAMEDETAILS = "namedetails";
-  @SerializedName(SERIALIZED_NAME_NAMEDETAILS)
-  private Namedetails namedetails;
+  public AutocompleteLocation placeId(String placeId) {
 
-  public static final String SERIALIZED_NAME_MATCHQUALITY = "matchquality";
-  @SerializedName(SERIALIZED_NAME_MATCHQUALITY)
-  private Matchquality matchquality;
-
-  public static final String SERIALIZED_NAME_EXTRATAGS = "extratags";
-  @SerializedName(SERIALIZED_NAME_EXTRATAGS)
-  private HashMap<String, String> extraTags;
-
-  public Location distance(BigDecimal distance) {
-    
-    this.distance = distance;
-    return this;
-  }
-
-   /**
-   * Get distance
-   * @return distance
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getDistance() {
-    return distance;
-  }
-
-
-  public void setDistance(BigDecimal distance) {
-    this.distance = distance;
-  }
-
-
-  public Location placeId(String placeId) {
-    
     this.placeId = placeId;
     return this;
   }
@@ -146,8 +103,8 @@ public class Location {
   }
 
 
-  public Location licence(String licence) {
-    
+  public AutocompleteLocation licence(String licence) {
+
     this.licence = licence;
     return this;
   }
@@ -169,8 +126,8 @@ public class Location {
   }
 
 
-  public Location osmType(String osmType) {
-    
+  public AutocompleteLocation osmType(String osmType) {
+
     this.osmType = osmType;
     return this;
   }
@@ -192,8 +149,8 @@ public class Location {
   }
 
 
-  public Location osmId(String osmId) {
-    
+  public AutocompleteLocation osmId(String osmId) {
+
     this.osmId = osmId;
     return this;
   }
@@ -215,13 +172,13 @@ public class Location {
   }
 
 
-  public Location boundingbox(List<String> boundingbox) {
-    
+  public AutocompleteLocation boundingbox(List<String> boundingbox) {
+
     this.boundingbox = boundingbox;
     return this;
   }
 
-  public Location addBoundingboxItem(String boundingboxItem) {
+  public AutocompleteLocation addBoundingboxItem(String boundingboxItem) {
     if (this.boundingbox == null) {
       this.boundingbox = new ArrayList<String>();
     }
@@ -246,8 +203,8 @@ public class Location {
   }
 
 
-  public Location lat(String lat) {
-    
+  public AutocompleteLocation lat(String lat) {
+
     this.lat = lat;
     return this;
   }
@@ -269,8 +226,8 @@ public class Location {
   }
 
 
-  public Location lon(String lon) {
-    
+  public AutocompleteLocation lon(String lon) {
+
     this.lon = lon;
     return this;
   }
@@ -285,15 +242,52 @@ public class Location {
   public String getLon() {
     return lon;
   }
-
-
   public void setLon(String lon) {
     this.lon = lon;
   }
 
+  public AutocompleteLocation displayPlace(String displayPlace) {
 
-  public Location displayName(String displayName) {
-    
+    this.displayPlace = displayPlace;
+    return this;
+  }
+
+  /**
+   * Get displayPlace
+   * @return displayPlace
+   **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  public String getDisplayPlace() {
+    return displayPlace;
+  }
+
+  public void setDisplayPlace(String displayPlace) {
+    this.displayPlace = displayPlace;
+  }
+
+  public AutocompleteLocation displayAddress(String displayAddress) {
+
+    this.displayAddress = displayAddress;
+    return this;
+  }
+
+  /**
+   * Get displayAddress
+   * @return displayAddress
+   **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getDisplayAddress() {
+    return displayAddress;
+  }
+  public void setDisplayAddress(String displayAddress) {
+    this.displayAddress = displayAddress;
+  }
+
+  public AutocompleteLocation displayName(String displayName) {
+
     this.displayName = displayName;
     return this;
   }
@@ -315,8 +309,8 @@ public class Location {
   }
 
 
-  public Location propertyClass(String propertyClass) {
-    
+  public AutocompleteLocation propertyClass(String propertyClass) {
+
     this.propertyClass = propertyClass;
     return this;
   }
@@ -338,8 +332,8 @@ public class Location {
   }
 
 
-  public Location type(String type) {
-    
+  public AutocompleteLocation type(String type) {
+
     this.type = type;
     return this;
   }
@@ -354,38 +348,12 @@ public class Location {
   public String getType() {
     return type;
   }
-
-
   public void setType(String type) {
     this.type = type;
   }
 
+  public AutocompleteLocation address(Address address) {
 
-  public Location importance(BigDecimal importance) {
-    
-    this.importance = importance;
-    return this;
-  }
-
-   /**
-   * Get importance
-   * @return importance
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public BigDecimal getImportance() {
-    return importance;
-  }
-
-
-  public void setImportance(BigDecimal importance) {
-    this.importance = importance;
-  }
-
-
-  public Location address(Address address) {
-    
     this.address = address;
     return this;
   }
@@ -406,105 +374,33 @@ public class Location {
     this.address = address;
   }
 
-
-  public Location namedetails(Namedetails namedetails) {
-    
-    this.namedetails = namedetails;
-    return this;
-  }
-
-   /**
-   * Get namedetails
-   * @return namedetails
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Namedetails getNamedetails() {
-    return namedetails;
-  }
-
-
-  public void setNamedetails(Namedetails namedetails) {
-    this.namedetails = namedetails;
-  }
-
-
-  public Location matchquality(Matchquality matchquality) {
-    
-    this.matchquality = matchquality;
-    return this;
-  }
-
-   /**
-   * Get matchquality
-   * @return matchquality
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Matchquality getMatchquality() {
-    return matchquality;
-  }
-
-
-  public void setMatchquality(Matchquality matchquality) {
-    this.matchquality = matchquality;
-  }
-
-  public Location extraTags(HashMap<String, String> extraTags) {
-
-    this.extraTags = extraTags;
-    return this;
-  }
-
-  /**
-   * Get extraTags
-   * @return extraTags
-   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public HashMap<String, String> getExtraTags() {
-    return extraTags;
-  }
-
-
-  public void setExtraTags(HashMap<String, String> extraTags) {
-    this.extraTags = extraTags;
-  }
-
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Location location = (Location) o;
-    return Objects.equals(this.distance, location.distance) &&
-        Objects.equals(this.placeId, location.placeId) &&
+    AutocompleteLocation location = (AutocompleteLocation) o;
+    return Objects.equals(this.placeId, location.placeId) &&
         Objects.equals(this.licence, location.licence) &&
         Objects.equals(this.osmType, location.osmType) &&
         Objects.equals(this.osmId, location.osmId) &&
         Objects.equals(this.boundingbox, location.boundingbox) &&
         Objects.equals(this.lat, location.lat) &&
         Objects.equals(this.lon, location.lon) &&
+        Objects.equals(this.displayPlace, location.displayPlace) &&
+        Objects.equals(this.displayAddress, location.displayAddress) &&
         Objects.equals(this.displayName, location.displayName) &&
         Objects.equals(this.propertyClass, location.propertyClass) &&
         Objects.equals(this.type, location.type) &&
-        Objects.equals(this.importance, location.importance) &&
-        Objects.equals(this.address, location.address) &&
-        Objects.equals(this.namedetails, location.namedetails) &&
-        Objects.equals(this.matchquality, location.matchquality) &&
-        Objects.equals(this.extraTags, location.extraTags);
+        Objects.equals(this.address, location.address);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(distance, placeId, licence, osmType, osmId, boundingbox, lat, lon, displayName, propertyClass, type, importance, address, namedetails, matchquality, extraTags);
+    return Objects.hash(placeId, licence, osmType, osmId, boundingbox, lat, lon, displayPlace, displayAddress, displayName, propertyClass, type, address);
   }
 
 
@@ -512,7 +408,6 @@ public class Location {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Location {\n");
-    sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
     sb.append("    placeId: ").append(toIndentedString(placeId)).append("\n");
     sb.append("    licence: ").append(toIndentedString(licence)).append("\n");
     sb.append("    osmType: ").append(toIndentedString(osmType)).append("\n");
@@ -520,14 +415,12 @@ public class Location {
     sb.append("    boundingbox: ").append(toIndentedString(boundingbox)).append("\n");
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");
+    sb.append("    displayPlace: ").append(toIndentedString(displayPlace)).append("\n");
+    sb.append("    displayAddress: ").append(toIndentedString(displayAddress)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    importance: ").append(toIndentedString(importance)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
-    sb.append("    namedetails: ").append(toIndentedString(namedetails)).append("\n");
-    sb.append("    matchquality: ").append(toIndentedString(matchquality)).append("\n");
-    sb.append("    extraTags: ").append(toIndentedString(extraTags)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -536,11 +429,10 @@ public class Location {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
-
 }

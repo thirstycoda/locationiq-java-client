@@ -13,27 +13,21 @@
 
 package com.locationiq.client.api;
 
-import LocationIq.ApiCallback;
-import LocationIq.ApiClient;
-import LocationIq.ApiException;
-import LocationIq.ApiResponse;
-import LocationIq.Configuration;
-import LocationIq.Pair;
-import LocationIq.ProgressRequestBody;
-import LocationIq.ProgressResponseBody;
-
 import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
-import com.locationiq.client.model.Error;
+import com.locationiq.client.model.AutocompleteLocation;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import LocationIq.ApiCallback;
+import LocationIq.ApiClient;
+import LocationIq.ApiException;
+import LocationIq.ApiResponse;
+import LocationIq.Configuration;
+import LocationIq.Pair;
 
 public class AutocompleteApi {
     private ApiClient localVarApiClient;
@@ -170,7 +164,7 @@ public class AutocompleteApi {
      * @param countrycodes Limit search to a list of countries. (optional)
      * @param acceptLanguage Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param tag Restricts the autocomplete search results to elements of specific OSM class and type.  Example - To restrict results to only class place and type city: tag&#x3D;place:city, To restrict the results to all of OSM class place: tag&#x3D;place (optional)
-     * @return List&lt;Object&gt;
+     * @return List&lt;AutocompleteLocation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -184,8 +178,8 @@ public class AutocompleteApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<Object> autocomplete(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag) throws ApiException {
-        ApiResponse<List<Object>> localVarResp = autocompleteWithHttpInfo(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag);
+    public List<AutocompleteLocation> autocomplete(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag) throws ApiException {
+        ApiResponse<List<AutocompleteLocation>> localVarResp = autocompleteWithHttpInfo(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag);
         return localVarResp.getData();
     }
 
@@ -200,7 +194,7 @@ public class AutocompleteApi {
      * @param countrycodes Limit search to a list of countries. (optional)
      * @param acceptLanguage Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param tag Restricts the autocomplete search results to elements of specific OSM class and type.  Example - To restrict results to only class place and type city: tag&#x3D;place:city, To restrict the results to all of OSM class place: tag&#x3D;place (optional)
-     * @return ApiResponse&lt;List&lt;Object&gt;&gt;
+     * @return ApiResponse&lt;List&lt;AutocompleteLocation&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -214,9 +208,9 @@ public class AutocompleteApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Object>> autocompleteWithHttpInfo(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag) throws ApiException {
+    public ApiResponse<List<AutocompleteLocation>> autocompleteWithHttpInfo(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag) throws ApiException {
         okhttp3.Call localVarCall = autocompleteValidateBeforeCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, null);
-        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<AutocompleteLocation>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -246,10 +240,10 @@ public class AutocompleteApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call autocompleteAsync(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, final ApiCallback<List<Object>> _callback) throws ApiException {
+    public okhttp3.Call autocompleteAsync(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, final ApiCallback<List<AutocompleteLocation>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = autocompleteValidateBeforeCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, _callback);
-        Type localVarReturnType = new TypeToken<List<Object>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<AutocompleteLocation>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
