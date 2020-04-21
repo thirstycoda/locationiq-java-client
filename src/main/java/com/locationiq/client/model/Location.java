@@ -13,23 +13,16 @@
 
 package com.locationiq.client.model;
 
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.locationiq.client.model.Address;
-import com.locationiq.client.model.Matchquality;
-import com.locationiq.client.model.Namedetails;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Location
@@ -90,7 +83,7 @@ public class Location {
 
   public static final String SERIALIZED_NAME_NAMEDETAILS = "namedetails";
   @SerializedName(SERIALIZED_NAME_NAMEDETAILS)
-  private Namedetails namedetails;
+  private Map<String, String> namedetails;
 
   public static final String SERIALIZED_NAME_MATCHQUALITY = "matchquality";
   @SerializedName(SERIALIZED_NAME_MATCHQUALITY)
@@ -407,7 +400,7 @@ public class Location {
   }
 
 
-  public Location namedetails(Namedetails namedetails) {
+  public Location namedetails(Map<String, String> namedetails) {
     
     this.namedetails = namedetails;
     return this;
@@ -420,12 +413,12 @@ public class Location {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Namedetails getNamedetails() {
+  public Map<String, String> getNamedetails() {
     return namedetails;
   }
 
 
-  public void setNamedetails(Namedetails namedetails) {
+  public void setNamedetails(Map<String, String> namedetails) {
     this.namedetails = namedetails;
   }
 

@@ -55,7 +55,7 @@ public class ReverseApiTest {
         Integer statecode = null;
         Integer showdistance = null;
         Integer postaladdress = null;
-        Location response = api.reverse(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress);
+        Location response = api.reverse(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, null, null);
 
         // TODO: test validations
     }
