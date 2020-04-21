@@ -13,29 +13,22 @@
 
 package com.locationiq.client.api;
 
+import com.google.gson.reflect.TypeToken;
+import com.locationiq.client.model.Location;
+
+import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import LocationIq.ApiCallback;
 import LocationIq.ApiClient;
 import LocationIq.ApiException;
 import LocationIq.ApiResponse;
 import LocationIq.Configuration;
 import LocationIq.Pair;
-import LocationIq.ProgressRequestBody;
-import LocationIq.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
-import java.math.BigDecimal;
-import com.locationiq.client.model.Error;
-import com.locationiq.client.model.Location;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ReverseApi {
     private ApiClient localVarApiClient;
@@ -69,6 +62,8 @@ public class ReverseApi {
      * @param statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      * @param showdistance Returns the straight line distance (meters) between the input location and the result&#39;s location. Value is set in the distance key of the response. Defaults to 0 [0,1] (optional)
      * @param postaladdress Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] (optional)
+     * @param osmType A specific osm type, node / way / relation to search an address for. [N|W|R] (optional)
+     * @param osmId A specific osm node / way / relation to return an address for. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +79,7 @@ public class ReverseApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reverseCall(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call reverseCall(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, String osmType, String osmId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -136,6 +131,14 @@ public class ReverseApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("postaladdress", postaladdress));
         }
 
+        if (osmType != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("osm_type", osmType));
+        }
+
+        if (osmId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("osm_id", osmId));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -158,7 +161,7 @@ public class ReverseApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call reverseValidateBeforeCall(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call reverseValidateBeforeCall(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, String osmType, String osmId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'lat' is set
         if (lat == null) {
@@ -181,7 +184,7 @@ public class ReverseApi {
         }
         
 
-        okhttp3.Call localVarCall = reverseCall(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, _callback);
+        okhttp3.Call localVarCall = reverseCall(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, osmType, osmId, _callback);
         return localVarCall;
 
     }
@@ -200,6 +203,8 @@ public class ReverseApi {
      * @param statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      * @param showdistance Returns the straight line distance (meters) between the input location and the result&#39;s location. Value is set in the distance key of the response. Defaults to 0 [0,1] (optional)
      * @param postaladdress Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] (optional)
+     * @param osmType A specific osm type, node / way / relation to search an address for. [N|W|R] (optional)
+     * @param osmId A specific osm node / way / relation to return an address for. (optional)
      * @return Location
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -214,8 +219,8 @@ public class ReverseApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Location reverse(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress) throws ApiException {
-        ApiResponse<Location> localVarResp = reverseWithHttpInfo(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress);
+    public Location reverse(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, String osmType, String osmId) throws ApiException {
+        ApiResponse<Location> localVarResp = reverseWithHttpInfo(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, osmType, osmId);
         return localVarResp.getData();
     }
 
@@ -233,6 +238,8 @@ public class ReverseApi {
      * @param statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      * @param showdistance Returns the straight line distance (meters) between the input location and the result&#39;s location. Value is set in the distance key of the response. Defaults to 0 [0,1] (optional)
      * @param postaladdress Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] (optional)
+     * @param osmType A specific osm type, node / way / relation to search an address for. [N|W|R] (optional)
+     * @param osmId A specific osm node / way / relation to return an address for. (optional)
      * @return ApiResponse&lt;Location&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -247,8 +254,8 @@ public class ReverseApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Location> reverseWithHttpInfo(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress) throws ApiException {
-        okhttp3.Call localVarCall = reverseValidateBeforeCall(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, null);
+    public ApiResponse<Location> reverseWithHttpInfo(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, String osmType, String osmId) throws ApiException {
+        okhttp3.Call localVarCall = reverseValidateBeforeCall(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, osmType, osmId,null);
         Type localVarReturnType = new TypeToken<Location>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -267,6 +274,8 @@ public class ReverseApi {
      * @param statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
      * @param showdistance Returns the straight line distance (meters) between the input location and the result&#39;s location. Value is set in the distance key of the response. Defaults to 0 [0,1] (optional)
      * @param postaladdress Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] (optional)
+     * @param osmType A specific osm type, node / way / relation to search an address for. [N|W|R] (optional)
+     * @param osmId A specific osm node / way / relation to return an address for. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -282,9 +291,9 @@ public class ReverseApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reverseAsync(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, final ApiCallback<Location> _callback) throws ApiException {
+    public okhttp3.Call reverseAsync(BigDecimal lat, BigDecimal lon, String format, Integer normalizecity, Integer addressdetails, String acceptLanguage, Integer namedetails, Integer extratags, Integer statecode, Integer showdistance, Integer postaladdress, String osmType, String osmId, final ApiCallback<Location> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = reverseValidateBeforeCall(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, _callback);
+        okhttp3.Call localVarCall = reverseValidateBeforeCall(lat, lon, format, normalizecity, addressdetails, acceptLanguage, namedetails, extratags, statecode, showdistance, postaladdress, osmType, osmId, _callback);
         Type localVarReturnType = new TypeToken<Location>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
