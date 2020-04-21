@@ -91,7 +91,7 @@ public class Location {
 
   public static final String SERIALIZED_NAME_EXTRATAGS = "extratags";
   @SerializedName(SERIALIZED_NAME_EXTRATAGS)
-  private HashMap<String, String> extraTags;
+  private Map<String, String> extraTags;
 
   public Location distance(BigDecimal distance) {
     
@@ -445,7 +445,7 @@ public class Location {
     this.matchquality = matchquality;
   }
 
-  public Location extraTags(HashMap<String, String> extraTags) {
+  public Location extraTags(Map<String, String> extraTags) {
 
     this.extraTags = extraTags;
     return this;
@@ -458,12 +458,12 @@ public class Location {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public HashMap<String, String> getExtraTags() {
+  public Map<String, String> getExtraTags() {
     return extraTags;
   }
 
 
-  public void setExtraTags(HashMap<String, String> extraTags) {
+  public void setExtraTags(Map<String, String> extraTags) {
     this.extraTags = extraTags;
   }
 
