@@ -14,7 +14,7 @@
 package com.locationiq.client.api;
 
 import com.google.gson.reflect.TypeToken;
-import com.locationiq.client.model.Timezone;
+import com.locationiq.client.model.TimezoneResponse;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
@@ -124,7 +124,7 @@ public class TimezoneApi {
      * Timezone is the process of converting a coordinate or location (latitude, longitude) to a timezone.
      * @param lat Latitude of the location to generate a timezone for. (required)
      * @param lon Longitude of the location to generate a timezone for. (required)
-     * @return Timezone
+     * @return TimezoneResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -138,8 +138,8 @@ public class TimezoneApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public Timezone timezone(BigDecimal lat, BigDecimal lon) throws ApiException {
-        ApiResponse<Timezone> localVarResp = timezoneWithHttpInfo(lat, lon);
+    public TimezoneResponse timezone(BigDecimal lat, BigDecimal lon) throws ApiException {
+        ApiResponse<TimezoneResponse> localVarResp = timezoneWithHttpInfo(lat, lon);
         return localVarResp.getData();
     }
 
@@ -148,7 +148,7 @@ public class TimezoneApi {
      * Timezone is the process of converting a coordinate or location (latitude, longitude) to a timezone.
      * @param lat Latitude of the location to generate an address for. (required)
      * @param lon Longitude of the location to generate an address for. (required)
-     * @return ApiResponse&lt;Timezone&gt;
+     * @return ApiResponse&lt;TimezoneResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -162,9 +162,9 @@ public class TimezoneApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Timezone> timezoneWithHttpInfo(BigDecimal lat, BigDecimal lon) throws ApiException {
+    public ApiResponse<TimezoneResponse> timezoneWithHttpInfo(BigDecimal lat, BigDecimal lon) throws ApiException {
         okhttp3.Call localVarCall = timezoneValidateBeforeCall(lat, lon, null);
-        Type localVarReturnType = new TypeToken<Timezone>(){}.getType();
+        Type localVarReturnType = new TypeToken<TimezoneResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -188,9 +188,9 @@ public class TimezoneApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call timezoneAsync(BigDecimal lat, BigDecimal lon, final ApiCallback<Timezone> _callback) throws ApiException {
+    public okhttp3.Call timezoneAsync(BigDecimal lat, BigDecimal lon, final ApiCallback<TimezoneResponse> _callback) throws ApiException {
         okhttp3.Call localVarCall = timezoneValidateBeforeCall(lat, lon, _callback);
-        Type localVarReturnType = new TypeToken<Timezone>(){}.getType();
+        Type localVarReturnType = new TypeToken<TimezoneResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

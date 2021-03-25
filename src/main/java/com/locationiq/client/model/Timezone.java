@@ -24,7 +24,7 @@ import java.util.Objects;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Location
+ * Timezone
  */
 
 public class Timezone {
@@ -129,11 +129,11 @@ public class Timezone {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Timezone location = (Timezone) o;
-    return Objects.equals(this.shortName, location.shortName) &&
-        Objects.equals(this.offsetSec, location.offsetSec) &&
-        Objects.equals(this.nowInDST, location.nowInDST) &&
-        Objects.equals(this.name, location.name);
+    Timezone timezone = (Timezone) o;
+    return Objects.equals(this.shortName, timezone.shortName) &&
+        Objects.equals(this.offsetSec, timezone.offsetSec) &&
+        Objects.equals(this.nowInDST, timezone.nowInDST) &&
+        Objects.equals(this.name, timezone.name);
   }
 
   @Override
