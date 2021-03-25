@@ -14,7 +14,6 @@
 package com.locationiq.client.api;
 
 import com.google.gson.reflect.TypeToken;
-import com.locationiq.client.model.Location;
 import com.locationiq.client.model.Timezone;
 
 import java.lang.reflect.Type;
@@ -165,7 +164,7 @@ public class TimezoneApi {
      */
     public ApiResponse<Timezone> timezoneWithHttpInfo(BigDecimal lat, BigDecimal lon) throws ApiException {
         okhttp3.Call localVarCall = timezoneValidateBeforeCall(lat, lon, null);
-        Type localVarReturnType = new TypeToken<Location>(){}.getType();
+        Type localVarReturnType = new TypeToken<Timezone>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -189,9 +188,9 @@ public class TimezoneApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call timezoneAsync(BigDecimal lat, BigDecimal lon, final ApiCallback<Location> _callback) throws ApiException {
+    public okhttp3.Call timezoneAsync(BigDecimal lat, BigDecimal lon, final ApiCallback<Timezone> _callback) throws ApiException {
         okhttp3.Call localVarCall = timezoneValidateBeforeCall(lat, lon, _callback);
-        Type localVarReturnType = new TypeToken<Location>(){}.getType();
+        Type localVarReturnType = new TypeToken<Timezone>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
