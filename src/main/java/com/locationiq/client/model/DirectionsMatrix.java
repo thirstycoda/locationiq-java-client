@@ -13,20 +13,14 @@
 
 package com.locationiq.client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.locationiq.client.model.DirectionsMatrixSources;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * DirectionsMatrix
@@ -39,7 +33,11 @@ public class DirectionsMatrix {
 
   public static final String SERIALIZED_NAME_DISTANCES = "distances";
   @SerializedName(SERIALIZED_NAME_DISTANCES)
-  private List<BigDecimal> distances = null;
+  private List<List<BigDecimal>> distances = null;
+
+  public static final String SERIALIZED_NAME_DURATIONS = "durations";
+  @SerializedName(SERIALIZED_NAME_DURATIONS)
+  private List<List<BigDecimal>> durations = null;
 
   public static final String SERIALIZED_NAME_FALLBACK_SPEED_CELLS = "fallback_speed_cells";
   @SerializedName(SERIALIZED_NAME_FALLBACK_SPEED_CELLS)
@@ -65,7 +63,7 @@ public class DirectionsMatrix {
    * @return code
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public String getCode() {
     return code;
@@ -77,15 +75,15 @@ public class DirectionsMatrix {
   }
 
 
-  public DirectionsMatrix distances(List<BigDecimal> distances) {
+  public DirectionsMatrix distances(List<List<BigDecimal>> distances) {
     
     this.distances = distances;
     return this;
   }
 
-  public DirectionsMatrix addDistancesItem(BigDecimal distancesItem) {
+  public DirectionsMatrix addDistancesItem(List<BigDecimal> distancesItem) {
     if (this.distances == null) {
-      this.distances = new ArrayList<BigDecimal>();
+      this.distances = new ArrayList<>();
     }
     this.distances.add(distancesItem);
     return this;
@@ -96,15 +94,46 @@ public class DirectionsMatrix {
    * @return distances
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
-  public List<BigDecimal> getDistances() {
+  public List<List<BigDecimal>> getDistances() {
     return distances;
   }
 
 
-  public void setDistances(List<BigDecimal> distances) {
+  public void setDistances(List<List<BigDecimal>> distances) {
     this.distances = distances;
+  }
+
+
+  public DirectionsMatrix durations(List<List<BigDecimal>> durations) {
+
+    this.durations = durations;
+    return this;
+  }
+
+  public DirectionsMatrix addDurationsItem(List<BigDecimal> durationsItem) {
+    if (this.durations == null) {
+      this.durations = new ArrayList<>();
+    }
+    this.durations.add(durationsItem);
+    return this;
+  }
+
+  /**
+   * Get distances
+   * @return distances
+   **/
+  @javax.annotation.Nullable
+  @ApiModelProperty()
+
+  public List<List<BigDecimal>> getDurations() {
+    return durations;
+  }
+
+
+  public void setDurations(List<List<BigDecimal>> durations) {
+    this.durations = durations;
   }
 
 
@@ -116,7 +145,7 @@ public class DirectionsMatrix {
 
   public DirectionsMatrix addFallbackSpeedCellsItem(BigDecimal fallbackSpeedCellsItem) {
     if (this.fallbackSpeedCells == null) {
-      this.fallbackSpeedCells = new ArrayList<BigDecimal>();
+      this.fallbackSpeedCells = new ArrayList<>();
     }
     this.fallbackSpeedCells.add(fallbackSpeedCellsItem);
     return this;
@@ -127,7 +156,7 @@ public class DirectionsMatrix {
    * @return fallbackSpeedCells
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public List<BigDecimal> getFallbackSpeedCells() {
     return fallbackSpeedCells;
@@ -147,7 +176,7 @@ public class DirectionsMatrix {
 
   public DirectionsMatrix addSourcesItem(DirectionsMatrixSources sourcesItem) {
     if (this.sources == null) {
-      this.sources = new ArrayList<DirectionsMatrixSources>();
+      this.sources = new ArrayList<>();
     }
     this.sources.add(sourcesItem);
     return this;
@@ -158,7 +187,7 @@ public class DirectionsMatrix {
    * @return sources
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public List<DirectionsMatrixSources> getSources() {
     return sources;
@@ -178,7 +207,7 @@ public class DirectionsMatrix {
 
   public DirectionsMatrix addDestinationsItem(DirectionsMatrixSources destinationsItem) {
     if (this.destinations == null) {
-      this.destinations = new ArrayList<DirectionsMatrixSources>();
+      this.destinations = new ArrayList<>();
     }
     this.destinations.add(destinationsItem);
     return this;
@@ -189,7 +218,7 @@ public class DirectionsMatrix {
    * @return destinations
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public List<DirectionsMatrixSources> getDestinations() {
     return destinations;
@@ -212,6 +241,7 @@ public class DirectionsMatrix {
     DirectionsMatrix directionsMatrix = (DirectionsMatrix) o;
     return Objects.equals(this.code, directionsMatrix.code) &&
         Objects.equals(this.distances, directionsMatrix.distances) &&
+        Objects.equals(this.durations, directionsMatrix.durations) &&
         Objects.equals(this.fallbackSpeedCells, directionsMatrix.fallbackSpeedCells) &&
         Objects.equals(this.sources, directionsMatrix.sources) &&
         Objects.equals(this.destinations, directionsMatrix.destinations);
@@ -219,7 +249,7 @@ public class DirectionsMatrix {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, distances, fallbackSpeedCells, sources, destinations);
+    return Objects.hash(code, distances, durations, fallbackSpeedCells, sources, destinations);
   }
 
 
@@ -229,6 +259,7 @@ public class DirectionsMatrix {
     sb.append("class DirectionsMatrix {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    distances: ").append(toIndentedString(distances)).append("\n");
+    sb.append("    durations: ").append(toIndentedString(durations)).append("\n");
     sb.append("    fallbackSpeedCells: ").append(toIndentedString(fallbackSpeedCells)).append("\n");
     sb.append("    sources: ").append(toIndentedString(sources)).append("\n");
     sb.append("    destinations: ").append(toIndentedString(destinations)).append("\n");

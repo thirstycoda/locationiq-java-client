@@ -15,8 +15,8 @@ package com.locationiq.client.auth;
 
 import com.locationiq.client.Pair;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-02-21T10:08:21.449715+05:30[Asia/Kolkata]")
 public class HttpBearerAuth implements Authentication {

@@ -13,10 +13,10 @@
 
 package LocationIq.auth;
 
-import LocationIq.Pair;
-
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
+
+import LocationIq.Pair;
 
 
 public class HttpBearerAuth implements Authentication {

@@ -13,29 +13,22 @@
 
 package com.locationiq.client.api;
 
+import com.google.gson.reflect.TypeToken;
+import com.locationiq.client.model.DirectionsDirections;
+
+import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import LocationIq.ApiCallback;
 import LocationIq.ApiClient;
 import LocationIq.ApiException;
 import LocationIq.ApiResponse;
 import LocationIq.Configuration;
 import LocationIq.Pair;
-import LocationIq.ProgressRequestBody;
-import LocationIq.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
-import java.math.BigDecimal;
-import com.locationiq.client.model.DirectionsDirections;
-import com.locationiq.client.model.Error;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class DirectionsApi {
     private ApiClient localVarApiClient;

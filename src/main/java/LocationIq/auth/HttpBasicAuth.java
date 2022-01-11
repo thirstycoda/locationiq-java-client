@@ -13,14 +13,11 @@
 
 package LocationIq.auth;
 
-import LocationIq.Pair;
-
-import okhttp3.Credentials;
-
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
-import java.io.UnsupportedEncodingException;
+import LocationIq.Pair;
+import okhttp3.Credentials;
 
 public class HttpBasicAuth implements Authentication {
     private String username;

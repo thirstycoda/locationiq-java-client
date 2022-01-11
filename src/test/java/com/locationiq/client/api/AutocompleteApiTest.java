@@ -13,15 +13,14 @@
 
 package com.locationiq.client.api;
 
-import LocationIq.ApiException;
-import com.locationiq.client.model.Error;
-import org.junit.Test;
-import org.junit.Ignore;
+import com.locationiq.client.model.AutocompleteLocation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.junit.Ignore;
+import org.junit.Test;
+
 import java.util.List;
-import java.util.Map;
+
+import LocationIq.ApiException;
 
 /**
  * API tests for AutocompleteApi
@@ -50,7 +49,7 @@ public class AutocompleteApiTest {
         String countrycodes = null;
         String acceptLanguage = null;
         String tag = null;
-        List<Object> response = api.autocomplete(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag);
+        List<AutocompleteLocation> response = api.autocomplete(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag);
 
         // TODO: test validations
     }

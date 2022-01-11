@@ -13,28 +13,21 @@
 
 package com.locationiq.client.api;
 
-import LocationIq.ApiCallback;
-import LocationIq.ApiClient;
-import LocationIq.ApiException;
-import LocationIq.ApiResponse;
-import LocationIq.Configuration;
-import LocationIq.Pair;
-import LocationIq.ProgressRequestBody;
-import LocationIq.ProgressResponseBody;
-
 import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
-
 import com.locationiq.client.model.DirectionsMatching;
-import com.locationiq.client.model.Error;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import LocationIq.ApiCallback;
+import LocationIq.ApiClient;
+import LocationIq.ApiException;
+import LocationIq.ApiResponse;
+import LocationIq.Configuration;
+import LocationIq.Pair;
 
 public class MatchingApi {
     private ApiClient localVarApiClient;

@@ -15,8 +15,8 @@ package com.locationiq.client.auth;
 
 import com.locationiq.client.Pair;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public interface Authentication {
     /**

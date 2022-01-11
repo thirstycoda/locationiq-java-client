@@ -13,17 +13,14 @@
 
 package com.locationiq.client.api;
 
-import LocationIq.ApiException;
-import java.math.BigDecimal;
 import com.locationiq.client.model.DirectionsDirections;
-import com.locationiq.client.model.Error;
-import org.junit.Test;
-import org.junit.Ignore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+
+import LocationIq.ApiException;
 
 /**
  * API tests for DirectionsApi
