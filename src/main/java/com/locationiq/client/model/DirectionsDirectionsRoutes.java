@@ -37,7 +37,7 @@ public class DirectionsDirectionsRoutes {
 
   public static final String SERIALIZED_NAME_GEOMETRY = "geometry";
   @SerializedName(SERIALIZED_NAME_GEOMETRY)
-  private String geometry;
+  private Object geometry;
 
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
@@ -60,7 +60,7 @@ public class DirectionsDirectionsRoutes {
 
   public DirectionsDirectionsRoutes addLegsItem(Object legsItem) {
     if (this.legs == null) {
-      this.legs = new ArrayList<Object>();
+      this.legs = new ArrayList<>();
     }
     this.legs.add(legsItem);
     return this;
@@ -71,7 +71,7 @@ public class DirectionsDirectionsRoutes {
    * @return legs
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public List<Object> getLegs() {
     return legs;
@@ -94,7 +94,7 @@ public class DirectionsDirectionsRoutes {
    * @return weightName
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public String getWeightName() {
     return weightName;
@@ -106,7 +106,7 @@ public class DirectionsDirectionsRoutes {
   }
 
 
-  public DirectionsDirectionsRoutes geometry(String geometry) {
+  public DirectionsDirectionsRoutes geometry(Object geometry) {
     
     this.geometry = geometry;
     return this;
@@ -117,14 +117,13 @@ public class DirectionsDirectionsRoutes {
    * @return geometry
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getGeometry() {
+  @ApiModelProperty()
+  public Object getGeometry() {
     return geometry;
   }
 
 
-  public void setGeometry(String geometry) {
+  public void setGeometry(Object geometry) {
     this.geometry = geometry;
   }
 
@@ -140,7 +139,7 @@ public class DirectionsDirectionsRoutes {
    * @return weight
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public BigDecimal getWeight() {
     return weight;
@@ -163,7 +162,7 @@ public class DirectionsDirectionsRoutes {
    * @return distance
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public BigDecimal getDistance() {
     return distance;
@@ -186,7 +185,7 @@ public class DirectionsDirectionsRoutes {
    * @return duration
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty()
 
   public BigDecimal getDuration() {
     return duration;
