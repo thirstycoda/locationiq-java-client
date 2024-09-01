@@ -58,6 +58,7 @@ public class AutocompleteApi {
      * @param countrycodes Limit search to a list of countries. (optional)
      * @param acceptLanguage Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param tag Restricts the autocomplete search results to elements of specific OSM class and type.  Example - To restrict results to only class place and type city: tag&#x3D;place:city, To restrict the results to all of OSM class place: tag&#x3D;place (optional)
+     * @param dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Our Geocoder will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 0. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -73,7 +74,7 @@ public class AutocompleteApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call autocompleteCall(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call autocompleteCall(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, Integer dedupe, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -113,6 +114,10 @@ public class AutocompleteApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("tag", tag));
         }
 
+        if (dedupe != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dedupe", dedupe));
+        }
+
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
@@ -135,7 +140,7 @@ public class AutocompleteApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call autocompleteValidateBeforeCall(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call autocompleteValidateBeforeCall(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, Integer dedupe, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'q' is set
         if (q == null) {
@@ -148,7 +153,7 @@ public class AutocompleteApi {
         }
         
 
-        okhttp3.Call localVarCall = autocompleteCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, _callback);
+        okhttp3.Call localVarCall = autocompleteCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, dedupe, _callback);
         return localVarCall;
 
     }
@@ -164,6 +169,7 @@ public class AutocompleteApi {
      * @param countrycodes Limit search to a list of countries. (optional)
      * @param acceptLanguage Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param tag Restricts the autocomplete search results to elements of specific OSM class and type.  Example - To restrict results to only class place and type city: tag&#x3D;place:city, To restrict the results to all of OSM class place: tag&#x3D;place (optional)
+     * @param dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Our Geocoder will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 0. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested.  (optional)
      * @return List&lt;AutocompleteLocation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -178,8 +184,8 @@ public class AutocompleteApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<AutocompleteLocation> autocomplete(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag) throws ApiException {
-        ApiResponse<List<AutocompleteLocation>> localVarResp = autocompleteWithHttpInfo(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag);
+    public List<AutocompleteLocation> autocomplete(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, Integer dedupe) throws ApiException {
+        ApiResponse<List<AutocompleteLocation>> localVarResp = autocompleteWithHttpInfo(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, dedupe);
         return localVarResp.getData();
     }
 
@@ -194,6 +200,7 @@ public class AutocompleteApi {
      * @param countrycodes Limit search to a list of countries. (optional)
      * @param acceptLanguage Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param tag Restricts the autocomplete search results to elements of specific OSM class and type.  Example - To restrict results to only class place and type city: tag&#x3D;place:city, To restrict the results to all of OSM class place: tag&#x3D;place (optional)
+     * @param dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Our Geocoder will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 0. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested.  (optional)
      * @return ApiResponse&lt;List&lt;AutocompleteLocation&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -208,8 +215,8 @@ public class AutocompleteApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<AutocompleteLocation>> autocompleteWithHttpInfo(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag) throws ApiException {
-        okhttp3.Call localVarCall = autocompleteValidateBeforeCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, null);
+    public ApiResponse<List<AutocompleteLocation>> autocompleteWithHttpInfo(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, Integer dedupe) throws ApiException {
+        okhttp3.Call localVarCall = autocompleteValidateBeforeCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, dedupe, null);
         Type localVarReturnType = new TypeToken<List<AutocompleteLocation>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -225,6 +232,7 @@ public class AutocompleteApi {
      * @param countrycodes Limit search to a list of countries. (optional)
      * @param acceptLanguage Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native (optional)
      * @param tag Restricts the autocomplete search results to elements of specific OSM class and type.  Example - To restrict results to only class place and type city: tag&#x3D;place:city, To restrict the results to all of OSM class place: tag&#x3D;place (optional)
+     * @param dedupe Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Our Geocoder will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 0. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -240,9 +248,9 @@ public class AutocompleteApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call autocompleteAsync(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, final ApiCallback<List<AutocompleteLocation>> _callback) throws ApiException {
+    public okhttp3.Call autocompleteAsync(String q, Integer normalizecity, Integer limit, String viewbox, Integer bounded, String countrycodes, String acceptLanguage, String tag, Integer dedupe, final ApiCallback<List<AutocompleteLocation>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = autocompleteValidateBeforeCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, _callback);
+        okhttp3.Call localVarCall = autocompleteValidateBeforeCall(q, normalizecity, limit, viewbox, bounded, countrycodes, acceptLanguage, tag, dedupe, _callback);
         Type localVarReturnType = new TypeToken<List<AutocompleteLocation>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
